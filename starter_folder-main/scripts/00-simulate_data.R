@@ -31,11 +31,12 @@ n <- length(years1) * length(months1)
 simulated_data <- tibble(
   Year = rep(years1, each = length(months1)),
   Month = rep(months1, times = length(years1)),
-  Total_deaths = rpois(n, lambda = 4),  # 总死亡人数，泊松分布，平均3人
-  Male = rbinom(n, size = Total_deaths, prob = 0.6),  # 男性死亡人数，按60%概率生成
-  Female = Total_deaths - Male,  # 女性死亡人数
-  Transgender = sample(c(0, 1, NA), n, replace = TRUE, prob = c(0.95, 0.03, 0.02))  # 跨性别人群，少量随机分布
-)
+  Total_deaths = rpois(n, lambda = 4),  # 总死亡人数，泊松分布，平均4人
+  Transgender = rbinom(n, size = Total_deaths, prob = 0.05),  # 跨性别人数，按5%概率生成
+  remaining_deaths = Total_deaths - Transgender,  # 剩余死亡人数
+  Male = rbinom(n, size = remaining_deaths, prob = 0.6),  # 男性死亡人数
+  Female = remaining_deaths - Male  # 女性死亡人数
+  )
 
 
 # 保存数据到 CSV 文件
