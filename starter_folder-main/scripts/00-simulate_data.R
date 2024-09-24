@@ -1,15 +1,18 @@
 #### Preamble ####
 # Purpose: Simulates data
 # Author: Fangning Zhang
-# Date: 19 September 2024
+# Date: 23 September 2024
 # Contact: fangning.zhang@mail.utoronto.ca 
 # License: MIT
 # Pre-requisites: none
 # Any other information needed? none
 
+install.packages("readr")  #安装 readr 包
+install.packages("tidyverse")
 
 #### Workspace setup ####
 library(tidyverse)
+library(readr)
 
 
 #### Simulate data ####
@@ -36,6 +39,6 @@ simulated_data <- tibble(
 
 
 # 保存数据到 CSV 文件
-write_csv(simulated_data, file = "data/simulated_shelter_deaths.csv")
+write_csv(simulated_data, file = "data1/simulated_shelter_deaths.csv")
 
 
