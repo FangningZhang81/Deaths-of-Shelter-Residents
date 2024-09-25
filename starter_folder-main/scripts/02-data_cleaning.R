@@ -1,44 +1,45 @@
 #### Preamble ####
-# Purpose: Cleans the raw plane data recorded by two observers..... [...UPDATE THIS...]
-# Author: Rohan Alexander [...UPDATE THIS...]
-# Date: 6 April 2023 [...UPDATE THIS...]
-# Contact: rohan.alexander@utoronto.ca [...UPDATE THIS...]
+# Purpose: Cleans the raw death data into an analysis dataset
+# Author: Fangning Zhang
+# Date: 23 September 2024
+# Contact: fangning.zhang@mail.utoronto.ca 
 # License: MIT
-# Pre-requisites: [...UPDATE THIS...]
-# Any other information needed? [...UPDATE THIS...]
+# Pre-requisites: none
+# Any other information needed? none
 
 #### Workspace setup ####
+# Load necessary libraries
 library(tidyverse)
+library(janitor)
 
 #### Clean data ####
-raw_data <- read_csv("inputs/data/plane_data.csv")
+# Read the raw data
+raw_data <- read_csv("data1/raw_data/raw_data.csv")  |> 
+  janitor::clean_names() # Clean column names
 
-cleaned_data <-
-  raw_data |>
-  janitor::clean_names() |>
-  select(wing_width_mm, wing_length_mm, flying_time_sec_first_timer) |>
-  filter(wing_width_mm != "caw") |>
+# Replace month abbreviations with numeric values using recode()
+cleaned_data <- raw_data |>
   mutate(
-    flying_time_sec_first_timer = if_else(flying_time_sec_first_timer == "1,35",
-                                   "1.35",
-                                   flying_time_sec_first_timer)
-  ) |>
-  mutate(wing_width_mm = if_else(wing_width_mm == "490",
-                                 "49",
-                                 wing_width_mm)) |>
-  mutate(wing_width_mm = if_else(wing_width_mm == "6",
-                                 "60",
-                                 wing_width_mm)) |>
-  mutate(
-    wing_width_mm = as.numeric(wing_width_mm),
-    wing_length_mm = as.numeric(wing_length_mm),
-    flying_time_sec_first_timer = as.numeric(flying_time_sec_first_timer)
-  ) |>
-  rename(flying_time = flying_time_sec_first_timer,
-         width = wing_width_mm,
-         length = wing_length_mm
-         ) |> 
-  tidyr::drop_na()
+    month = recode(
+      month,
+      Jan = "01", Feb = "02", Mar = "03", Apr = "04", May = "05", Jun = "06",
+      Jul = "07", Aug = "08", Sep = "09", Oct = "10", Nov = "11", Dec = "12"
+    )
+  )
+
+# Add a new column with the format "year_month"
+cleaned_data <- cleaned_data |>
+  mutate(year_month = paste(year, month, sep = "_"))
+
+# Replace NA values in the actual column name with 0
+# This will convert any non-numeric values to NA
+cleaned_data <- cleaned_data |>
+  mutate(transgender_non_binary_two_spirit = as.numeric(transgender_non_binary_two_spirit))
+
+cleaned_data <- cleaned_data |>
+  mutate(transgender_non_binary_two_spirit = replace_na(transgender_non_binary_two_spirit, 0))
+
 
 #### Save data ####
-write_csv(cleaned_data, "outputs/data/analysis_data.csv")
+write_csv(cleaned_data, "data1/analysis_data/analysis_data.csv")
+
