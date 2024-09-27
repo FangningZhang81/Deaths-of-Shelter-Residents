@@ -1,11 +1,11 @@
 ---
-title: "Mortality Trends Among Shelter Residents in Toronto: A Longitudinal Study from 2007 to 2024"
+title: "Mortality Trends Among Shelter Residents in Toronto from 2007 to 2024"
 author: 
   - Fangning Zhang
 thanks: "Code and data are available at: https://github.com/FangningZhang81/Deaths-of-Shelter-Residents."
 date: today
 date-format: long
-abstract: "First sentence. Second sentence. Third sentence. Fourth sentence."
+abstract: "This study conducts a series of analyses of mortality among shelter residents in Toronto from 2007 to 2023, focusing on overall trends, gender differences, and seasonal variations. The results indicate a concerning increase in deaths starting from 2019, particularly among males. The number of deaths during the winter months is higher compared to other months. Understanding the mortality of shelter residents is crucial for formulating effective social policies, improving shelter services, and enhancing the health and well-being of vulnerable groups."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -37,11 +37,9 @@ The analysis revealed a concerning upward trend in the number of deaths starting
 
 The rise in the number of deaths starting in 2019 worths attention. However, this increase does not necessarily indicate worsening shelter conditions or declining health among residents. The rise could be due to an increase in the number of shelter residents, changes in admission policies, or external factors such as the impact of COVID-19 and other social and public health issues (@ramin2009health). This is discussed in detail in the discussion section.
 
-You can and should cross-reference sections and sub-sections. We use @citeR and @rohan.
+The remainder of this paper is structured as follows: @sec-data describes the data sources, tools, cleaning process, visualization, result and related datasets; and @sec-discussion summarizes the key findings, interprets the results, discusses limitations, and suggests directions for future research.
 
-The remainder of this paper is structured as follows:@sec-data describes the data sources, tools, cleaning process, visualization, result and related datasets; and @sec-discussion summarizes the key findings, interprets the results, discusses limitations, and suggests directions for future research.
-
-
+\newpage
 
 # Data {#sec-data}
 
@@ -254,6 +252,8 @@ ggplot(monthly_deaths, aes(x = factor(month), y = total_deaths)) +
 ## Other Datasets
 There are some related datasets found on OpenDataToronto (@opendatatorotno), but they are not used for the following reasons.The "Death Registry Statistics" dataset contains variables that are too broad and do not provide specific information on deaths among vulnerable populations, making it unsuitable for detailed analysis of shelter resident mortality.The "Fatal and non-fatal suspected opioid overdoses in the shelter system" dataset, while relevant, only covers one specific cause of death (opioid overdoses) and therefore does not capture the full scope of mortality within the shelter system, making it insufficient as the primary dataset. The dataset "Daily Shelter Occupancy" can be a very helpful dataset for this study. As The number of deaths among shelter residents is closely related to the total number of people residing in the shelter. The "Daily Shelter Occupancy" dataset could be useful for understanding the relationship between death rates and the total number of shelter residents, but it was not included in this study because the primary focus is on the death statistics themselves, rather than occupancy rates. Future studies could consider integrating this dataset to explore such relationships in more depth.
 
+\newpage
+
 # Discussion {#sec-discussion}
 
 ## Summary of Key Findings
@@ -276,30 +276,9 @@ One limitation of this study is that the original dataset does not account for T
 
 Future research should explore external factors such as economic conditions and the availability of healthcare resources that may further influence the number of deaths among shelter residents. It is recommended to utilize more diverse datasets, such as daily shelter occupancy rates which is mentioned earlier and other health-related data, to gain a deeper understanding of the health and mortality trends of shelter residents. These approaches would offer a deeper understanding of the complex factors influencing the vulnerable population mortality.
 
-\newpage
-
-\appendix
-
-# Appendix {-}
-
-
-# Additional data details
-
-# Model details {#sec-model-details}
-
-## Posterior predictive check
-
-
-## Diagnostics
-
-@fig-stanareyouokay-1 is a trace plot. It shows... This suggests...
-
-@fig-stanareyouokay-2 is a Rhat plot. It shows... This suggests...
-
 
 
 \newpage
-
 
 # References
 
