@@ -21,11 +21,11 @@ sdata$Total_deaths |> min() < 0
 sdata$Male |> min() < 0
 
 #test3
-#总死亡人数是否等于男性+女性+跨性别
-# 将 Transgender 列中的 NA 值替换为 0
+# total=female+male+trans
+# Replace NA values in the Transgender column with 0
 transgender_na_replaced <- ifelse(is.na(simulated_data$Transgender), 0, simulated_data$Transgender)
 
-# 检查总死亡人数是否等于男性 + 女性 + 跨性别
+# test total=female+male+trans
 (simulated_data$Total_deaths == simulated_data$Male + simulated_data$Female + transgender_na_replaced) |> 
   all()
 

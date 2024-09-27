@@ -5,7 +5,7 @@ author:
 thanks: "Code and data are available at: https://github.com/FangningZhang81/Deaths-of-Shelter-Residents."
 date: today
 date-format: long
-abstract: "This study conducts a series of analyses of mortality among shelter residents in Toronto from 2007 to 2023, focusing on overall trends, gender differences, and seasonal variations. The results indicate a concerning increase in deaths starting from 2019, particularly among males. The number of deaths during the winter months is higher compared to other months. Understanding the mortality of shelter residents is crucial for formulating effective social policies, improving shelter services, and enhancing the health and well-being of vulnerable groups."
+abstract: "This study conducts a series of analyses of mortality among shelter residents in Toronto from 2007 to 2023, focusing on overall trends, gender differences, and seasonal variations. The results indicate a concerning increase in deaths starting from 2019, particularly among males. The number of deaths during the winter months is higher compared to other months. Understanding the mortality of shelter residents is crucial for formulating effective social policies, improving shelter services, and enhancing the health and well-being of this vulnerable group."
 format: pdf
 number-sections: true
 bibliography: references.bib
@@ -33,11 +33,11 @@ style_file("paper/paper.qmd")
 
 Shelter residents are one of the most vulnerable groups in urban areas, facing numerous challenges such as housing instability, health issues, and social exclusion. Numerous studies have shown that shelter residents are at a significantly higher risk of premature death compared to the general population due to factors such as poor health, lack of access to medical care, and exposure to unsafe environments(@hwang2009mortality). Understanding the mortality of shelter residents is crucial for formulating effective social policies, improving shelter services and also improving the health and well-being of shelter residents.
 
-Although many existing researches highlight the higher mortality rates among the homeless population, there is still a lack of analysis specifically targeting shelter residents. In this study, a comprehensive analysis of mortality data is made among shelter residents in Toronto, focusing on the following key aspects. First, we analyze the overall trend in the number of deaths over the 16-year period from 2007 to 2023. Second, we explored gender differences in mortality. Third, we analyzed the monthly distribution of deaths to understand whether different climates or seasons have varying impacts on shelter residents.
+Although many existing researches highlight the higher mortality rates among the homeless population, there is still a lack of analysis specifically targeting shelter residents. In this study, a comprehensive analysis of mortality data is made among shelter residents in Toronto, focusing on the following key aspects. First, we analyze the overall trend in the number of deaths over the 16-year period from 2007 to 2023. Second, we explore gender differences in mortality. Third, we analyze the monthly distribution of deaths to understand whether different climates or seasons have varying impacts on shelter residents.
 
-The analysis revealed a concerning upward trend in the number of deaths starting from 2019, despite a slight decline in the following two years. Male deaths number have consistently been higher than female deaths, which is more and more significant after 2019. Additionally, there was an increase in deaths during the winter months, suggesting a link between extreme weather conditions and mortality risk may exist. This may consistent with previous research indicating that bad weather conditions and overcrowding in shelters can exacerbate health risks for homeless individuals (@vuillermoz2016mortality).
+The analysis reveal a concerning upward trend in the number of deaths starting from 2019, despite a slight decline in the following two years. Male deaths number have consistently been higher than female deaths, which is more and more significant after 2019. Additionally, there is an increase in deaths during the winter months, suggesting a link between extreme weather conditions and mortality risk may exist. This may consistent with previous research indicating that bad weather conditions and overcrowding in shelters can exacerbate health risks for homeless individuals (@vuillermoz2016mortality).
 
-The rise in the number of deaths starting in 2019 worths attention. However, this increase does not necessarily indicate worsening shelter conditions or declining health among residents. The rise could be due to an increase in the number of shelter residents, changes in admission policies, or external factors such as the impact of COVID-19 and other social and public health issues (@ramin2009health). This is discussed in detail in the discussion section.
+The rise in the number of deaths starting in 2019 deserves attention. However, this increase does not necessarily indicate worsening shelter conditions or declining health among residents. The rise could be due to an increase in the number of shelter residents, changes in admission policies, or external factors such as the impact of COVID-19 and other social and public health issues (@ramin2009health). This is discussed in detail in the discussion section.
 
 The remainder of this paper is structured as follows: @sec-data describes the data sources, tools, cleaning process, visualization, result and related datasets; and @sec-discussion summarizes the key findings, interprets the results, discusses limitations, and suggests directions for future research.
 
@@ -63,19 +63,19 @@ kable(head(data1))
 ```
 ## Data Tools
 
-The data was extracted, cleaned and visualize using R programming language and the whole coding process is done with R (@citeR). Some packages are used throughout the paper, including tidyverse (@cite_tidyverse), ggplot2 (@cite_ggplot), styler (@cite_styler), janitor (@citejanitor), OpenDataToronto
+The data is extracted, cleaned and visualized using R programming language and the whole coding process is done with R (@citeR). Some packages are used throughout the paper, including tidyverse (@cite_tidyverse), ggplot2 (@cite_ggplot), styler (@cite_styler), janitor (@citejanitor), OpenDataToronto
 (@opendatatorotno), knitr (@cite_knitr), and KableExtra (@cite_kableExtra). Besides, the stater folder from Rohan (@rohan)is used.
 
 ## Data Cleaning
 
-The raw data was first imported from the file and the column names were standardized using the `janitor` package(@citejanitor) to ensure consistency and ease of use throughout the analysis. The next step involved converting the month abbreviations into numeric values to increase the ease of use and analysis. For example, "01" for January, "02" for February.
+The raw data is first imported from the file and the column names are standardized using the `janitor` package(@citejanitor) to ensure consistency and ease of use throughout the analysis. The next step is converting the month abbreviations into numeric values to increase the ease of use and analysis. For example, "01" for January, "02" for February.
 
-A new column named `year_month` was generated by concatenating the `year` and `month` columns making it easier to perform time-series analyses and visualizations.
+A new column named `year_month` is generated by concatenating the `year` and `month` columns making it easier to perform time-series analyses and visualizations.
 
-The dataset also included a column named `transgender_non_binary_two_spirit`, which some rows contained non-numeric values (n/a). All `NA` values in this column were replaced with 0 to ensure the data was suitable for statistical analysis and visualization.
+The dataset also includes a column named `transgender_non_binary_two_spirit`, which contain non-numeric values (n/a) in some rows. All `NA` values in this column are replaced with 0 to ensure the data is suitable for statistical analysis and visualization.
 
 
-Finally, the cleaned dataset was saved to a new file named `analysis_data.csv` in the `analysis_data` directory. It includes the following variables:
+Finally, the cleaned dataset is saved to a new file named `analysis_data.csv` in the `analysis_data` directory. It includes the following variables:
 
 - `year`: The year in which the death occurred.
 - `month`: The month in which the death occurred, converted to numeric values for ease of analysis.
@@ -85,7 +85,7 @@ Finally, the cleaned dataset was saved to a new file named `analysis_data.csv` i
 - `transgender_non_binary_two_spirit`: The number of decedents identified as transgender, non-binary, or two-spirit. In cases where this information is unavailable, the value is recorded as zero.
 - `year_month`: A constructed variable representing the year and month combined, formatted as "year_month" (e.g., 2007_01 for January 2007). 
 
-The @tbl-summary below provides a summary of the cleaned data, showing key statistics (maximum, minimum, mean, median, and variance) for the total number of deaths, as well as for male and female decedents. It highlights that the average number of deaths per month is 4, with males averaging 3 deaths and females 1 death.
+The @tbl-summary below provides a summary of the cleaned data, showing key statistics (maximum, minimum, mean, median, and variance) for the total number of deaths, as well as for male and female decedents. It highlights the average number of deaths per month is 4, with males averaging 3 deaths and females 1 death.
 
 ```{r}
 #| warning: false
@@ -128,6 +128,7 @@ Graphical representations, including line plot, pie chart and bar charts, are us
 #| message: false
 #| label: fig-total
 #| fig-cap: "Total Number of Deaths by Year (2007-2023)"
+
 # Filter data for the years 2007 to 2023
 filtered_data <- data |>
   filter(year >= 2007 & year <= 2023)
@@ -222,7 +223,7 @@ pie(
 )
 
 ```
-@fig-category displays the death trend of each category among shelter residents in Toronto from 2007 to 2023. The data shows a significant increase in deaths starting from 2019 of all three lines, while the yellow line remains at a relatively low level. The total number of deaths equals the sum of male, female, and other gender deaths.The males death rate has consistently been higher than females and the differences is becoming increasingly obvious. The pie chart (@fig-dis) shows the gender distribution of the deaths. 78.2% of the total deaths are from males, while females account for 65.3%. In contrast, individuals of other genders make up only 4.7%.
+@fig-category displays the death trend of each category among shelter residents in Toronto from 2007 to 2023. The data shows a significant increase in deaths starting from 2019 of all three lines, while the yellow line remains at a relatively low level. The total number of deaths equals the sum of male, female, and other gender deaths.The males death rate has consistently been higher than females and the differences are becoming increasingly obvious. The pie chart (@fig-dis) shows the gender distribution of the deaths. 78.2% of the total deaths are from males, while females account for 65.3%. In contrast, individuals of other genders make up only 4.7%.
 
 ```{r}
 #| warning: false
@@ -249,10 +250,10 @@ ggplot(monthly_deaths, aes(x = factor(month), y = total_deaths)) +
             color = "black") +
   theme_minimal() 
 ```
-@fig-month illustrates the total number of deaths by month among shelter residents. The highest number of deaths occurred in January which is 80 people, followed by relatively high numbers in November which is 72 people. Conversely, the lowest number of deaths occurred in March and September which is 53 and 51 separatly. There is a slight increase in deaths during the winter months (December to February).
+@fig-month illustrates the total number of deaths by month among shelter residents. The highest number of deaths occurred in January which is 80 people, followed by relatively high numbers in November which is 72 people. Conversely, the lowest number of deaths occurred in March and September which is 53 and 51 separately. There is a slight increase in deaths during the winter months (December to February).
 
 ## Other Datasets
-There are some related datasets found on OpenDataToronto (@opendatatorotno), but they are not used for the following reasons.The "Death Registry Statistics" dataset contains variables that are too broad and do not provide specific information on deaths among vulnerable populations, making it unsuitable for detailed analysis of shelter resident mortality.The "Fatal and non-fatal suspected opioid overdoses in the shelter system" dataset, while relevant, only covers one specific cause of death (opioid overdoses) and therefore does not capture the full scope of mortality within the shelter system, making it insufficient as the primary dataset. The dataset "Daily Shelter Occupancy" can be a very helpful dataset for this study. As The number of deaths among shelter residents is closely related to the total number of people residing in the shelter. The "Daily Shelter Occupancy" dataset could be useful for understanding the relationship between death rates and the total number of shelter residents, but it was not included in this study because the primary focus is on the death statistics themselves, rather than occupancy rates. Future studies could consider integrating this dataset to explore such relationships in more depth.
+There are some related datasets found on OpenDataToronto (@opendatatorotno), but they are not used for the following reasons.The "Death Registry Statistics" dataset contains variables that are too broad and do not provide specific information on deaths among vulnerable populations, making it unsuitable for detailed analysis of shelter resident mortality.The "Fatal and non-fatal suspected opioid overdoses in the shelter system" dataset, while relevant, only covers one specific cause of death (opioid overdoses) and therefore does not capture the full scope of mortality within the shelter system, making it insufficient as the primary dataset. The dataset "Daily Shelter Occupancy" can be a very helpful dataset for this study. As The number of deaths among shelter residents is closely related to the total number of people residing in the shelter. This dataset could be useful for understanding the relationship between death rates and the total number of shelter residents, but it was also not included in this study because the primary focus is on the death statistics themselves, rather than occupancy rates. Future studies could consider include this dataset to explore such relationships.
 
 \newpage
 
@@ -260,7 +261,7 @@ There are some related datasets found on OpenDataToronto (@opendatatorotno), but
 
 ## Summary of Key Findings
 
-The study revealed an overall upward trend in the mortality among shelter residents, with a significant gender difference which is the death number for males is consistently higher than that for females. Additionally, there is a more deaths during the winter months. A particularly concerning finding is the sharp rise in mortality starting in 2019.
+The study reveal an overall upward trend in the mortality among shelter residents, with a significant gender difference which is the death number for males is consistently higher than that for females. Additionally, there is a more deaths during the winter months. A particularly concerning finding is the sharp rise in mortality starting in 2019.
 
 ## Interpretation of Findings
 

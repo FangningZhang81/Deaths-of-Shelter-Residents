@@ -17,17 +17,17 @@ library(readr)
 
 #### Simulate data ####
 
-# 设置随机种子
+# set seed
 set.seed(304)
 
-# 定义模拟数据的参数
+# Define the parameters of the simulation data
 years1 <- 2010:2020  # 年份范围
 months1 <- month.abb  # 月份缩写
 
-# 模拟数据集的大小
+# The size of the simulated dataset
 n <- length(years1) * length(months1)
 
-# 生成模拟数据
+# Generate simulated data
 simulated_data <- tibble(
   Year = rep(years1, each = length(months1)),
   Month = rep(months1, times = length(years1)),
@@ -39,7 +39,7 @@ simulated_data <- tibble(
   )
 
 
-# 保存数据到 CSV 文件
+# save as CSV
 write_csv(simulated_data, file = "data1/simulated_shelter_deaths.csv")
 
 
