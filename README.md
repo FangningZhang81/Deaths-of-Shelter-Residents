@@ -1,7 +1,7 @@
 # Deaths-of-Shelter-Residents
 
 ## Overview
-This repo provides analysis on the mortality trends of shelter residents in Toronto from 2007 to 2023.It focuses on understanding the overall death patterns, gender disparities, and seasonal variations within this vulnerable population. The dataset can be found on OpenDataToronto.
+This repo provides analysis on the mortality trends of shelter residents in Toronto from 2007 to 2023. It focuses on understanding the overall death patterns, gender disparities, and seasonal variations within this vulnerable population. The dataset can be found on OpenDataToronto.
 
 ## File Structure
 -   `scripts` contains the R scripts used to simulate, download, clean and test the data.
