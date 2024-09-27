@@ -37,9 +37,7 @@ The remainder of this paper is structured as follows. @sec-data....
 # Data {#sec-data}
 
 ## Overview
-The dataset used in this study is titled "Deaths of Shelter Residents". The dataset is published by the Toronto Shelter and Support Services Department and is obtained from OpenDataToronto (@opendatatorotno). It covers the deaths of shelter residents from 2007 to the present and is still updated monthly. Variables such as the total number of decedents and the breakdown of deaths by gender (male, female, transgender/non-binary/two-spirit) are included. All death counts are reported on a monthly basis. For privacy and ethical reasons, the dataset does not contain any personally identifiable information. 
-
-A dataset titled "Death Registry Statistics" is also found on OpenDataToronto (@opendatatorotno). The dataset is related to the study, but the variables are too general. For example, information on the number of deaths among vulnerable populations cannot be found in this dataset. The dataset titled "Fatal and non-fatal suspected opioid overdoses in the shelter system" also found on OpenDataToronto (@opendatatorotno) can be a helper dataset. Since it only covers one specific cause of death, it cannot serve as the primary dataset for the study.
+The dataset used in this study is titled "Deaths of Shelter Residents". The dataset is published by the Toronto Shelter and Support Services Department and is obtained from OpenDataToronto (@opendatatorotno), which is accurate and reliable. It covers the deaths of shelter residents from 2007 to the present. Variables such as the total number of decedents and the breakdown of deaths by gender (male, female, transgender/non-binary/two-spirit) are included. All death counts are reported on a monthly basis and is still updated monthly. For privacy and ethical reasons, the dataset does not contain any personally identifiable information. 
 
 A @tbl-raw with first few rows is shown below, which can give an overview of the raw data and variables.
 
@@ -55,9 +53,9 @@ data1 <- read_csv(here::here("data1/raw_data/raw_data.csv"))
 kable(head(data1))
 ```
 ## Data Tools
-The whole study is done with R programming language (@citeR). During processing and analyzing the data, multiple of packages are used. For example, 
+
 The data was extracted, cleaned and visualize using R programming language and the whole coding process is done with R (@citeR). Some packages are used throughout the paper, including tidyverse (@cite_tidyverse), ggplot2 (@cite_ggplot), janitor (@citejanitor), OpenDataToronto
-(@opendatatorotno), knitr (@cite_knitr), and KableExtra (@cite_kableExtra).
+(@opendatatorotno), knitr (@cite_knitr), and KableExtra (@cite_kableExtra). Besides, the stater folder from Rohan (@rohan)is used.
 
 ## Data Cleaning
 
@@ -244,47 +242,26 @@ ggplot(monthly_deaths, aes(x = factor(month), y = total_deaths)) +
 ```
 @fig-month illustrates the total number of deaths by month among shelter residents. The highest number of deaths occurred in January which is 80 people, followed by relatively high numbers in November which is 72 people. Conversely, the lowest number of deaths occurred in March and September which is 53 and 51 separatly. There is a slight increase in deaths during the winter months (December to February).
 
-
-## Model set-up
-
-Define $y_i$ as the number of seconds that the plane remained aloft. Then $\beta_i$ is the wing width and $\gamma_i$ is the wing length, both measured in millimeters.  
-
-\begin{align} 
-y_i|\mu_i, \sigma &\sim \mbox{Normal}(\mu_i, \sigma) \\
-\mu_i &= \alpha + \beta_i + \gamma_i\\
-\alpha &\sim \mbox{Normal}(0, 2.5) \\
-\beta &\sim \mbox{Normal}(0, 2.5) \\
-\gamma &\sim \mbox{Normal}(0, 2.5) \\
-\sigma &\sim \mbox{Exponential}(1)
-\end{align}
-
-We run the model in R [@citeR] using the `rstanarm` package of @rstanarm. We use the default priors from `rstanarm`.
-
-
-### Model justification
-
-We expect a positive relationship between the size of the wings and time spent aloft. In particular...
-
-We can use maths by including latex between dollar signs, for instance $\theta$.
-
-
-# Results
-
-Our results are summarized in @tbl-modelresults.
-
-
-
-
+## Other Datasets
+There are some related datasets found on OpenDataToronto (@opendatatorotno), but they are not used for the following reasons.The "Death Registry Statistics" dataset contains variables that are too broad and do not provide specific information on deaths among vulnerable populations, making it unsuitable for detailed analysis of shelter resident mortality.The "Fatal and non-fatal suspected opioid overdoses in the shelter system" dataset, while relevant, only covers one specific cause of death (opioid overdoses) and therefore does not capture the full scope of mortality within the shelter system, making it insufficient as the primary dataset. The dataset "Daily Shelter Occupancy" can be a very helpful dataset for this study. As The number of deaths among shelter residents is closely related to the total number of people residing in the shelter. The "Daily Shelter Occupancy" dataset could be useful for understanding the relationship between death rates and the total number of shelter residents, but it was not included in this study because the primary focus is on the death statistics themselves, rather than occupancy rates. Future studies could consider integrating this dataset to explore such relationships in more depth.
 
 # Discussion
 
-## First discussion point {#sec-first-point}
+## Summary of Key Findings
 
-If my paper were 10 pages, then should be be at least 2.5 pages. The discussion is a chance to show off what you know and what you learnt from all this. 
+The study revealed an overall upward trend in the mortality among shelter residents, with a significant gender difference which is the death number for males is consistently higher than that for females. Additionally, there is a more deaths during the winter months. A particularly concerning finding is the sharp rise in mortality starting in 2019.
 
-## Second discussion point
+## Interpretation of Findings
 
-## Third discussion point
+The observed seasonal variations in mortality, particularly the increase during winter months, could be influenced by several factors, including extreme weather conditions, overcrowding in shelters, and the availability of healthcare resources. Harsh winter conditions may exacerbate existing health issues.
+
+The higher number of deaths among males compared to females may be attributed to various factors, including environmental and social factors within the shelter system. It is also possible that this difference is due to a larger number of male residents compared to female residents.
+
+The underlying causes of these trends are important directions for further in-depth research in the future.
+
+## Limitations
+
+One limitation of this study is that the original dataset does not account for Transgender/Non-binary/Two-Spirit individuals before 2020, which reduces the accuracy of gender-specific analyses and raises ethical concerns. Additionally, the number of deaths may depend on the number of shelter residents, but this information is not included in the dataset, making it impossible to calculate mortality rates. Furthermore, changes in shelter admission conditions and other policies, which could impact the number of deaths, are not discussed in this paper.
 
 ## Weaknesses and next steps
 
