@@ -24,6 +24,8 @@ knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
 library(knitr)
 library(kableExtra)
 library(tidyverse)
+library(styler)
+style_file("paper/paper.qmd")
 ```
 
 
@@ -61,7 +63,7 @@ kable(head(data1))
 ```
 ## Data Tools
 
-The data was extracted, cleaned and visualize using R programming language and the whole coding process is done with R (@citeR). Some packages are used throughout the paper, including tidyverse (@cite_tidyverse), ggplot2 (@cite_ggplot), janitor (@citejanitor), OpenDataToronto
+The data was extracted, cleaned and visualize using R programming language and the whole coding process is done with R (@citeR). Some packages are used throughout the paper, including tidyverse (@cite_tidyverse), ggplot2 (@cite_ggplot), styler (@cite_styler), janitor (@citejanitor), OpenDataToronto
 (@opendatatorotno), knitr (@cite_knitr), and KableExtra (@cite_kableExtra). Besides, the stater folder from Rohan (@rohan)is used.
 
 ## Data Cleaning
